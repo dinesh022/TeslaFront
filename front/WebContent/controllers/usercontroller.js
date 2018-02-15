@@ -2,7 +2,7 @@
  * 
  * 
  */
-app.controller('UserController',function($scope,$location,UserService){
+app.controller('UserController',function($scope,$rootScope,$location,UserService){
 	$scope.registerUser=function(user){ 
 		UserService.registerUser(user).then(
 		function(response){
@@ -11,6 +11,21 @@ app.controller('UserController',function($scope,$location,UserService){
 		},function(response){
 			$scope.error=response.data
 		})
-		
-	}
+		}
+
+$scope.login=function(user){
+	console.log('UserController -> login')
+	console.log(user)
+	UserService.login(user).then(function(response){
+		alert('logged in Successfully')
+		console.log('success')
+		$rootScope.loggedInUser=response.data
+		$location.path('/home')
+		},function(response){
+			console.log('error')
+			$scope.error=response.data
+			$location.path('/login')
+		})
+}
+
 })
