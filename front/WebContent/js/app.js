@@ -1,7 +1,7 @@
 /**
  * Angular Js module
  */
-var app=angular.module('app',['ngRoute'])
+var app=angular.module('app',['ngRoute','ngCookies'])
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/register',{
@@ -12,6 +12,31 @@ app.config(function($routeProvider){
 		templateUrl:'views/login.html',
 		controller:'UserController'
 	})
-	
-	
+	.when('/edituserprofile',{
+		templateUrl:'views/edituserprofile.html',
+		controller:'UserController'
+	})
+	.when('/addjob',{
+		templateUrl:'views/jobform.html',
+		controller:'JobController'
+	})
+})
+app.run(function($location,$rootScope,$cookieStore,UserService){
+	if($rootScope.loggedInUser==undefined)
+		$rootScope.loggedInUser=$cookieStore.get('currentuser')
+		$rootScope.logout=function(){
+		UserService.logout().then(
+		function(response){
+			delete $rootScope.loggedInUser;
+			$cookieStore.remove('currentuser')
+			$rootScope.message="succesfully logged out.."
+			$location.path=('/home');
+			
+			
+			},function(response){
+			$rootScope.error=response.data
+			if(response.status==401)
+				$location.path('/login');
+	})
+	}
 })

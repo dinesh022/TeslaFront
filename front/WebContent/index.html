@@ -12,13 +12,19 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/"><img src="resources/images/Tesla.png" height="70" width="70"></a>
+      <a class="navbar-brand" href="/"><img src="resources/images/Tesla.png" height="40" width="40"></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="#/register">Register</a></li>
-      <li><a href="#/login">Login</a></li>
-      <li><a href="#">Bonjour   {{loggedInUser.firstName}}{{loggedInUser.lastName}}</a></li>
-      <li><a href="">logout</a></li>
+      <li><a href="#/register" ng-show="loggedInUser.firstName==undefined">Register</a></li>
+      <li><a href="#/login" ng-show="loggedInUser.firstName==undefined">Login</a></li>
+      <li><a href="#/edituserprofile" ng-show="loggedInUser.firstName!=undefined">Edit User Profile</a></li>
+    <li class="dropdown"><a href="" class="dropdown-toggle"
+      data-toggle="dropdown" ng-show="loggedInUser.firstName!=undefined">Job<b class="caret"></b></a>
+      <ul class="dropdown-menu">
+      <li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add Job</a></li>
+      </ul></li>
+      <li><a href="#" ng-show="loggedInUser.firstName!=undefined">Bonjour   {{loggedInUser.firstName}}&nbsp;{{loggedInUser.lastName}}</a></li>
+      <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstName!=undefined">logout</a></li>
     </ul>
   </div>
 </nav>
@@ -28,8 +34,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
 	<script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="controllers/usercontroller.js"></script>
 <script type="text/javascript" src="services/userservice.js"></script>
+<script type="text/javascript" src="controllers/jobcontroller.js"></script>
+<script type="text/javascript" src="services/jobservice.js"></script>
+
 </html>
 
