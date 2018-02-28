@@ -20,6 +20,19 @@ app.config(function($routeProvider){
 		templateUrl:'views/jobform.html',
 		controller:'JobController'
 	})
+	.when('/alljobs',{
+		templateUrl:'views/jobslist.html',
+		controller:'JobController'
+	})
+		.when('/getjob/:id',{
+		templateUrl:'views/jobdetail.html',
+		controller:'JobController'
+	})
+	.when('/addblog',{
+		templateUrl:'views/blogform.html',
+		controller:'BlogController'
+	})
+	
 })
 app.run(function($location,$rootScope,$cookieStore,UserService){
 	if($rootScope.loggedInUser==undefined)
