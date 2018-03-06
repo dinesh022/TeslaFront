@@ -22,13 +22,14 @@
       data-toggle="dropdown" ng-show="loggedInUser.firstName!=undefined">Job<b class="caret"></b></a>
       <ul class="dropdown-menu">
       <li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add Job</a></li>
-      <li><a href="#/alljobs" ng-show="loggedInUser.role=='ADMIN'">view Job</a></li>
+      <li><a href="#/alljobs">view Job</a></li>
       </ul></li>
     <li class="dropdown"><a href="" class="dropdown-toggle"
       data-toggle="dropdown" ng-show="loggedInUser.firstName!=undefined">Blog<b class="caret"></b></a>
       <ul class="dropdown-menu">
       <li><a href="#/addblog">Add Blog</a></li>
-      
+      <li><a href="#/blogsnotapproved" ng-show="loggedInUser.role=='ADMIN'">Blogs waiting for approval</a></li>
+      <li><a href="#/blogsapproved">Blogs</a></li>
       </ul></li>
       <li><a href="#" ng-show="loggedInUser.firstName!=undefined">Bonjour   {{loggedInUser.firstName}}&nbsp;{{loggedInUser.lastName}}</a></li>
       <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstName!=undefined">logout</a></li>

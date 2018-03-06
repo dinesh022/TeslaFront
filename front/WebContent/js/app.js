@@ -32,7 +32,22 @@ app.config(function($routeProvider){
 		templateUrl:'views/blogform.html',
 		controller:'BlogController'
 	})
-	
+	.when('/blogsnotapproved',{
+		templateUrl:'views/blogsnotapproved.html',
+		controller:'BlogController'
+	})
+	.when('/blogsapproved',{
+		templateUrl:'views/blogsapproved.html',
+		controller:'BlogController'
+	})
+	.when('/getblog/:id',{
+		templateUrl:'views/blogsdetails.html',
+		controller:'BlogDetailsController'
+	})
+	.when('/getblognotapproved/:id',{
+		templateUrl:'views/blogapprovalform.html',
+		controller:'BlogDetailsController'
+	})
 })
 app.run(function($location,$rootScope,$cookieStore,UserService){
 	if($rootScope.loggedInUser==undefined)
