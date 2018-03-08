@@ -41,13 +41,25 @@ app.config(function($routeProvider){
 		controller:'BlogController'
 	})
 	.when('/getblog/:id',{
-		templateUrl:'views/blogsdetails.html',
+		templateUrl:'views/blogdetails.html',
 		controller:'BlogDetailsController'
 	})
 	.when('/getblognotapproved/:id',{
 		templateUrl:'views/blogapprovalform.html',
 		controller:'BlogDetailsController'
 	})
+	.when('/getnotification/:id',{
+		templateUrl:'views/notificationdetails.html',
+		controller:'NotificationController'
+})
+ .when('/home',{
+		templateUrl:'views/home.html',
+		controller:'NotificationController'
+	})
+	
+	.otherwise({
+		templateUrl:'views/home.html'
+})
 })
 app.run(function($location,$rootScope,$cookieStore,UserService){
 	if($rootScope.loggedInUser==undefined)

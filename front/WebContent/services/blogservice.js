@@ -19,5 +19,20 @@ app.factory('BlogService',function($http){
 		return	$http.get("http://localhost:8777/middle/getblog/"+id)
 		}
 	
+	blogService.hasUserLikedBlog=function(id){
+		return	$http.get("http://localhost:8777/middle/hasuserlikedblog/"+id)
+		}
+	
+	blogService.approve=function(blog) {
+		 return $http.put("http://localhost:8777/middle/approve",blog)
+	 }
+	 blogService.reject=function(blog,rejectionReason) {
+		 return $http.put("http://localhost:8777/middle/reject/"+rejectionReason,blog)
+	 }
+	 blogService.updateLikes=function(id) {
+		 return $http.put("http://localhost:8777/middle/updatelikes/"+id)
+	 }
+	 
+	 
 	return blogService;
 })
