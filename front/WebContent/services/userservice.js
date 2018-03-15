@@ -13,7 +13,7 @@ app.factory('UserService',function($http){
 	console.log(user)
 	return	$http.post("http://localhost:8777/middle/login",user)
 	}
-	userService.logout=function(){
+	userService.logout=function(user){
 	return	$http.put("http://localhost:8777/middle/logout")	
 	}
 	userService.getUser=function(){

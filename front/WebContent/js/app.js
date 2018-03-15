@@ -44,6 +44,10 @@ app.config(function($routeProvider){
 		templateUrl:'views/blogdetails.html',
 		controller:'BlogDetailsController'
 	})
+	.when('/suggestedusers',{
+		templateUrl:'views/suggestedusers.html',
+		controller:'FriendController'
+	})
 	.when('/getblognotapproved/:id',{
 		templateUrl:'views/blogapprovalform.html',
 		controller:'BlogDetailsController'
@@ -51,6 +55,10 @@ app.config(function($routeProvider){
 	.when('/getnotification/:id',{
 		templateUrl:'views/notificationdetails.html',
 		controller:'NotificationController'
+})
+    .when('/uploadprofile',{
+		templateUrl:'views/uploadprofilepic.html',
+		
 })
  .when('/home',{
 		templateUrl:'views/home.html',

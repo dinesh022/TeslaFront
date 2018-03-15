@@ -32,7 +32,12 @@ app.factory('BlogService',function($http){
 	 blogService.updateLikes=function(id) {
 		 return $http.put("http://localhost:8777/middle/updatelikes/"+id)
 	 }
-	 
-	 
+	 blogService.addComment=function(blogComment){
+		    return $http.post("http://localhost:8777/middle/addcomment",blogComment)
+		    }
+
+		blogService.getBlogComments=function(id){
+		    return $http.get("http://localhost:8777/middle/blogcomments/"+id)
+		    }
 	return blogService;
 })
