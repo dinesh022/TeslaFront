@@ -1,13 +1,14 @@
 <table class = "table table-striped">
 <tr ng-repeat="user in suggestedUsers">
-<td>{{user.email}}<br>
-{{user.firstName}} &nbsp; {{user.lastName}}<br>
-<B>phone Number</B>{{user.phonenumber}}
-</td>
 <td>
 <img src="http://localhost:8777/middle/getimage/{{user.email}}" alt="No Picture" width="40px" height="40px" class="img-rounded">
 </td>
+<td>{{user.email}}<br>
+{{user.firstName}} &nbsp; {{user.lastName}}<br>
+{{user.contact}}
+</td>
+
 <td>
-<button type="button" class="button button-primary">Add Friend</button>
+<button type="button" class="button button-primary" ng-click="addFriend(user)">Add Friend</button>
 </tr>
 </table>

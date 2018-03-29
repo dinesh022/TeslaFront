@@ -37,6 +37,8 @@
       data-toggle="dropdown" ng-show="loggedInUser.firstName!=undefined">Friend<b class="caret"></b></a>
       <ul class="dropdown-menu">
       <li><a href="#/suggestedusers">Suggested Users</a></li>
+      <li><a href="#/pendingrequests">Pending Requests</a></li>
+      <li><a href="#/friends">Friends</a></li>
       </ul></li>
       
       <li><a href="#/uploadprofile" ng-show="loggedInUser.firstName!=undefined">
@@ -60,12 +62,78 @@
 </span>
 </ul>
 </li>
+
+<li><a href="#/chat" ng-show="loggedInUser.firstName">Chat </a></li>
+ <li>
+ 
+ <div class="navbar buttons" ng-show="loggedInUser.firstName!=undefined">
+<input type="text" placeholder="search user" class="navbar search" ng-model="user">
+<a href="#/searchuser" class="btn navbar-btn btn-primary pull-right" type="button" ng-click="searchUser(user)">
+<i class="fa fa-search"></i></a>
+</div>
+</li>
+
+
       <li><a href="#" ng-show="loggedInUser.firstName!=undefined">Bonjour   {{loggedInUser.firstName}}&nbsp;{{loggedInUser.lastName}}</a></li>
-      <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstName!=undefined">logout</a></li>
+     <li><a href="#/"><span class="glyphicon glyphicon-log-out" ng-click="logout()"ng-show="loggedInUser.firstName!=undefined">Logout</span></a></li>
     </ul>
   </div>
 </nav>
 <div data-ng-view></div>
+<body style ="background:url(https://www.artsfon.com/pic/201510/1366x768/artsfon.com-73234.jpg)no-repeat; background-size=100%;">
+
+
+<br><br><br><br><br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- footer -->
+	<div class="footer" id="footer">
+		<div class="container">
+			<div class="col-md-4 agileinfo_footer_grid">
+				<h4>About Us</h4>
+				<p><span>Tesla.com is the most innovative and second largest online job portal in
+				   India. Founded in 2008, over the past decade, Tesla.com has become a prominent
+				   name in the recruitment industry.</span></p>
+			</div>
+		
+			<div class="col-md-8 agileinfo_footer_grid">
+				<h4>Address</h4>
+				<ul>
+					<li><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  1062 Ann Street Fortitude Valley </li>
+					<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">info@example.com</a></li>
+					<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 030 880 5628</li>
+				</ul>
+			</div>
+			
+			
+		</div>
+	</div>
+<!-- //footer -->
+
 </body>
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
@@ -85,5 +153,10 @@
 <script type="text/javascript" src="controllers/notificationcontroller.js"></script>
 <script type="text/javascript" src="services/friendservice.js"></script>
 <script type="text/javascript" src="controllers/FriendController.js"></script>
+<script type="text/javascript" src="services/chatservice.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="js/stomp/dist/stomp.min.js"></script>
+
 </html>
 

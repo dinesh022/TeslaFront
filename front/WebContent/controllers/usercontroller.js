@@ -49,4 +49,14 @@ $cookieStore.put('loggedInUser',response.data)
 
 })
 }
+
+$rootScope.searchUser=function(user) {
+	UserService.searchUser(user).then(function(response) {
+		$scope.users=response.data
+	},function(response) {
+		$scope.error=response.data
+		$location.path('/login')
+	})
+}
+
 })

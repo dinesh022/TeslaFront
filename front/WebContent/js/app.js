@@ -44,10 +44,7 @@ app.config(function($routeProvider){
 		templateUrl:'views/blogdetails.html',
 		controller:'BlogDetailsController'
 	})
-	.when('/suggestedusers',{
-		templateUrl:'views/suggestedusers.html',
-		controller:'FriendController'
-	})
+	
 	.when('/getblognotapproved/:id',{
 		templateUrl:'views/blogapprovalform.html',
 		controller:'BlogDetailsController'
@@ -60,6 +57,29 @@ app.config(function($routeProvider){
 		templateUrl:'views/uploadprofilepic.html',
 		
 })
+.when('/suggestedusers',{
+		templateUrl:'views/suggestedusers.html',
+		controller:'FriendController'
+	})
+	.when('/pendingrequests',{
+		templateUrl:'views/pendingrequests.html',
+		controller:'FriendController'
+
+	})
+	.when('/friends',{
+		templateUrl:'views/friendsList.html',
+		controller:'FriendController'
+
+})
+.when('/chat',{
+		templateUrl:'views/chat.html',
+		controller:'ChatCtrl'
+	})
+	.when('/searchuser',{
+		templateUrl:'views/users.html',
+		controller:'UserController'
+})
+
  .when('/home',{
 		templateUrl:'views/home.html',
 		controller:'NotificationController'
@@ -69,22 +89,24 @@ app.config(function($routeProvider){
 		templateUrl:'views/home.html'
 })
 })
-app.run(function($location,$rootScope,$cookieStore,UserService){
+app.run(function($rootScope,$location,UserService,$cookieStore){
 	if($rootScope.loggedInUser==undefined)
-		$rootScope.loggedInUser=$cookieStore.get('currentuser')
-		$rootScope.logout=function(){
-		UserService.logout().then(
-		function(response){
-			delete $rootScope.loggedInUser;
-			$cookieStore.remove('currentuser')
-			$rootScope.message="succesfully logged out.."
-			$location.path=('/home');
+		$rootScope.loggedInUser=$cookieStore.get("currentuser")
+		
+		$rootScope.logout=function()
+		{
+		UserService.logout().then(function(response)
+				{
 			
-			
-			},function(response){
-			$rootScope.error=response.data
-			if(response.status==401)
-				$location.path('/login');
-	})
+				delete $rootScope.loggedInUser
+				$cookieStore.remove("currentuser")
+				$rootScope.message="Loggedout Successfully..."
+				$location.path('/home')
+				},function(response)
+				{
+					$rootScope.error=response.data
+					if(response.status==401)
+					$location.path('/login')
+				})
 	}
 })
